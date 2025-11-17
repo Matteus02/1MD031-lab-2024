@@ -15,11 +15,11 @@
 
             <section>
             <div style="display: inline-block">    
-            <h3>Unknown sauce bruger</h3>
+            <h3>Unknown sauce buger</h3>
             <img src="https://st2.depositphotos.com/1326558/7437/i/600/depositphotos_74376259-stock-photo-sandwich-with-chicken-burger-and.jpg" alt = "Bruger" title="Secret sauce burger" style="width: 200px">
            
             <ul>
-                <h4> Ingridentes:</h4>
+                <h4> Allergies:</h4>
                <li> Meatpaddy </li>
                <li> Lettuce </li>
                <li> Tomato </li> 
@@ -33,7 +33,7 @@
             <img src="https://st2.depositphotos.com/1326558/9193/i/600/depositphotos_91932468-stock-photo-sandwich-hamburger-with-juicy-burgers.jpg" alt = "Bruger" title="Secret sauce burger" style="width: 200px">
            
             <ul>
-                <h4> Ingridentes:</h4>
+                <h4> Allergies:</h4>
                <li> Meatpaddy </li>
                <li> Lettuce </li>
                <li> Tomato </li> 
@@ -44,10 +44,10 @@
 
             <div style="display: inline-block">    
             <h3>Known sauce bruger</h3>
-            <img src="https://st5.depositphotos.com/1326558/69737/i/450/depositphotos_697373084-stock-photo-beef-hamburger-sandwich-beef-burger.jpg" alt = "Bruger" title="Secret sauce burger" style="width: 200px">
+            <img src="https://st5.depositphotos.com/1326558/69737/i/450/depositphotos_697373084-stock-photo-beef-hamburger-sandwich-beef-burger.jpg" alt = "Bruger" title="Secret sauce burger" style="width: 214px">
            
             <ul>
-                <h4> Ingridentes:</h4>
+                <h4> Allergies:</h4>
                <li> Meatpaddy </li>
                <li> Lettuce </li>
                <li> Tomato </li> 
@@ -60,26 +60,61 @@
             <section>
             <div>
             <h3>Important information</h3>
-            <a> This is really important</a>
+            <a> Please provide necessary information to place order</a>
             </div>
 
             <div>
             <h3>Delivery information:</h3>
             <from>
-            <p>
-                <label for ="firstname">First</label><br>
-                <input type = "text" id ="firstname" name="fn" required="required" placeholder="First name">
-            </p
-            <p>
-                <label for="lastname">Last</label><br>
-                <input type="text" id="lastname" name="ln" placeholder="Last name">
-            </p>
-            <p>
-                <label for="email">Email</label><br>
-                <input type="email" id="email" name="em" required="required" placeholder="E-mail address">
-            </p>
+                <p>
+                    <label for ="fullname">Full name</label><br>
+                    <input type = "text" id ="fullname" name="fn" required="required" placeholder="First- and Last name">
+                </p>
+                <p>
+                    <label for="email">Email</label><br>
+                    <input type="email" id="email" name="em" required="required" placeholder="E-mail address">
+                </p>
+                <p>
+                    <label for="street">Street</label><br>
+                    <input type="text" id="street" name="st" placeholder="Street name">
+                </p>
+                <p>
+                    <label for="housenumber">House</label><br>
+                    <input type="number" id="housenumber" name="hn" placeholder="House number">
+                </p>
+                <p>
+                    <label for ="payment">Select payment option</label><br>
+                    <select id="payment" name="pm"> 
+                        <option>Credit card</option>
+                        <option>Apple Pay</option>
+                        <option>Bank transaction</option>
+                        <option>Cash</option>
+                    </select>
+                </p>
 
+                <p>
+                    <label>Gender</label> <br>
+                    <input type = "radio" id ="male" name="gn" value="male">
+                    <label for ="male">Male<label> <br>
+                    
+                    <input type = "radio" id ="female" name="gn" value="female">
+                    <label for ="female">Female<label> <br>                          
+                                                                                    
+                    <input type = "radio" id ="other" name="gn" value="other">
+                    <label for ="other">Other<label> <br>                          
+                                                                                    
+                    <input type = "radio" id ="undiscloed" name="gn" value = "undiscloed" checked="checked">
+                    <label for ="undiscloed">Undisclosed<label>
+                    
+                </p>
             </form>
+            </div>
+            
+            <div>
+                <button type="submit">
+                    <img src="https://st2.depositphotos.com/1322515/5340/i/950/depositphotos_53400569-stock-illustration-delivery-scooter.jpg" alt = "Order" title="Order" style="width: 40px">
+                    Submit order!
+                </button>
             </div>
 
             </section>
