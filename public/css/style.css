@@ -1,13 +1,18 @@
 @import 'https://fonts.googleapis.com/css?family=Pacifico|Dosis';
+@import 'https://fonts.googleapis.com/css2?family=Stack+Sans+Notch:wght@200..700&display=swap';
 
 :root {
 
---color-of-burgerAlternativ: yellow;
+--color-of-burgerAlternativ: black;
 }
 
 body {
 	font-family: Dosis, san-serif; 
 	font-size: 25pt;
+	background-color: brown;
+}
+header{
+	color: white;
 }
 
 h1 {
@@ -22,13 +27,39 @@ h1 {
 
 }
 #burgers {
+	padding:30px;
 	background-color: black;
 	color: white;
-	border: 10px dotted var(--color-of-burgerAlternativ);
+	outline: 10px dotted var(--color-of-burgerAlternativ);;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
 }
 
-#order{
+.burgerAlternativ1{
+	margin: 30px;
 	padding: 40px;
+	border: 5px solid darkred; 
+	grid-column: 1;
+}
+.burgerAlternativ2{
+	margin: 30px;
+	padding: 40px;
+	border: 5px solid darkred; 
+	grid-column: 2;
+}
+.burgerAlternativ3{
+	margin: 30px;
+	padding: 40px;
+	border: 5px solid darkred; 
+	grid-column: 3;
+}
+
+
+#order{
+	margin: 20px;
+	padding: 40px;
+	border: 5px solid gray;
+	background-color: aliceblue;
 }
 
 button:hover {
@@ -46,21 +77,28 @@ input[type="radio"]{
 	cursor:pointer;
 }
 
-.burgerAlternativ {
-	margin: 60px;
-	padding: 40px;
-	display: inline-block;
-	align: center; 
-	border: 5px solid var(--color-of-burgerAlternativ); 
-
-}
 
 #headline img{
-	opacity: 0.7;
-	padding: 40px;
+	opacity: 0.9;
+	width: 100%;
+	height: auto;
 }
 
 #headline h1{
 	position: absolute;
+	font-size: 10vw;
+	font-family: "Stack Sans Notch", sans-serif;
+	z-index: 1;
+	top: 10%;
+    left: 50%;
+	transform: translate(-50%);
+	Color: darkred;
+	padding: 20px;
+	text-shadow: 1vw 1vw black;
 }
+
+#headline {
+	position: relative;
+}
+
 
