@@ -1,21 +1,23 @@
 [{
-    "name": "Veggie Bliss", 
+    "name": "Known Sauce Burger", 
     "kCal": 500, 
-    "url": "https://images-bonnier.imgix.net/files/ifo/production/20220412084608/Kødfri-burger-1.jpg?auto=compress,format&w=1024%201024w",
+    "img": "https://st2.depositphotos.com/1326558/7437/i/600/depositphotos_74376259-stock-photo-sandwich-with-chicken-burger-and.jpg",
     "lactose": false, 
     "gluten": false
 },
 {
-    "name": "Veggie Bliss", 
-    "kCal": 500, 
-    "url": "https://images-bonnier.imgix.net/files/ifo/production/20220412084608/Kødfri-burger-1.jpg?auto=compress,format&w=1024%201024w",
+    "name": "Secret Sauce Burger", 
+    "kCal": 530, 
+    "img": "https://st2.depositphotos.com/1326558/9193/i/600/depositphotos_91932468-stock-photo-sandwich-hamburger-with-juicy-burgers.jpg",
     "lactose": false, 
-    "gluten": false
+    "gluten": true
 },
 {
-    "name": "Veggie Bliss", 
-    "kCal": 500, 
-    "url": "https://images-bonnier.imgix.net/files/ifo/production/20220412084608/Kødfri-burger-1.jpg?auto=compress,format&w=1024%201024w",
-    "lactose": false, 
+    "name": "Unknown Sauce Bruger", 
+    "kCal": 420, 
+    "img": "https://st5.depositphotos.com/1326558/69737/i/450/depositphotos_697373084-stock-photo-beef-hamburger-sandwich-beef-burger.jpg",
+    "lactose": true, 
     "gluten": false
 }]
+
+
