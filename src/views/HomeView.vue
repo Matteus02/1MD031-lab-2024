@@ -13,8 +13,9 @@
   <main>
 
     <section id="burgers">
-      <Burger v-for="burger in burgers"
-      v-bind:burger = "burger"/>
+      <Burger v-for="burger in burgers" v-bind:burger="burger" v-bind:key="burger.name"
+        v-on:orderedBurger="addToOrder($event)" />
+
     </section>
 
     <section id="order">
@@ -22,6 +23,7 @@
         <h3>Important information</h3>
         <a> Please provide necessary information to place order</a>
       </div>
+
 
       <div>
         <h3>Delivery information:</h3>
@@ -67,26 +69,28 @@
             <label for="undiscloed">Undisclosed</label>
 
           </p>
-          </form>
+        </form>
       </div>
 
     </section>
 
     <div>
-      <button type="submit" v-on:click = "printOrder">
+      <button id="orderButton" type="submit" v-on:click="printOrder">
         <img
           src="https://st2.depositphotos.com/1322515/5340/i/950/depositphotos_53400569-stock-illustration-delivery-scooter.jpg"
           alt="Order" title="Order" style="width: 40px">
         Submit order!
       </button>
     </div>
+
+
   </main>
   <hr>
   <footer>
     &copy; ReadyBrugers Inc
   </footer>
-  
-  
+
+
   <div>
     <div id="map" v-on:click="addOrder">
       click here
@@ -111,6 +115,7 @@ function MenuItem(name, URL_image, kCal, containsGluten, containsLactose) {
 }
 
 
+
 export default {
   name: 'HomeView',
   components: {
@@ -124,10 +129,16 @@ export default {
       street: "",
       house: "",
       payment: "",
-      gender: ""
+      gender: "",
+      orderedBurgers: {}
     }
   },
   methods: {
+
+    addToOrder: function (event) {
+      this.orderedBurgers[event.name] = event.amount;
+      console.log(orderedBurgers);
+    },
 
     printOrder: function () {
       console.log(this.fullname, this.email, this.street, this.house, this.payment, this.gender)
@@ -156,89 +167,93 @@ export default {
 </script>
 
 <style>
-
 @import 'https://fonts.googleapis.com/css?family=Pacifico|Dosis';
 @import 'https://fonts.googleapis.com/css2?family=Stack+Sans+Notch:wght@200..700&display=swap';
 
 :root {
 
---color-of-burgerAlternativ: black;
+  --color-of-burgerAlternativ: black;
 }
 
 body {
-	font-family: Dosis, san-serif; 
-	font-size: 25pt;
-	background-color: brown;
+  font-family: Dosis, san-serif;
+  font-size: 25pt;
+  background-color: brown;
 }
-header{
-	color: white;
+
+header {
+  color: white;
 }
 
 h1 {
-	
-	color: gray;
-	text-align: center;
-	text-transform: uppercase;
+
+  color: gray;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 
 #burgers {
-	padding:30px;
-	background-color: black;
-	color: white;
-	outline: 10px dotted var(--color-of-burgerAlternativ);;
-	display: flex;
+  padding: 30px;
+  background-color: black;
+  color: white;
+  outline: 10px dotted var(--color-of-burgerAlternativ);
+  ;
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 3rem;
 }
 
 
-#order{
-	margin: 20px;
-	padding: 40px;
-	border: 5px solid gray;
-	background-color: aliceblue;
+#order {
+  margin: 20px;
+  padding: 40px;
+  border: 5px solid gray;
+  background-color: wheat;
 }
 
 button:hover {
-	background-color: green;
-	cursor:pointer;
+  background-color: green;
+  cursor: pointer;
 }
 
-button{
-	margin: 10px;
-	height: 50px;
-	width: 200px;
+#orderButton {
+  margin: 10px;
+  height: 50px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  font-size: 40px;
+  align-items: center;
 }
 
-input[type="radio"]{
-	cursor:pointer;
+input[type="radio"] {
+  cursor: pointer;
 }
 
 
-#headline img{
-	opacity: 0.9;
-	width: 100%;
-	height: auto;
+#headline img {
+  opacity: 0.9;
+  width: 100%;
+  height: auto;
 
 }
 
-#headline h1{
-	position: absolute;
-	font-size: 10vw;
-	font-family: "Stack Sans Notch", sans-serif;
-	z-index: 1;
-	top: 10%;
-    left: 50%;
-	transform: translate(-50%);
-	Color: darkred;
-	padding: 20px;
-	text-shadow: 1vw 1vw black;
+#headline h1 {
+  position: absolute;
+  font-size: 10vw;
+  font-family: "Stack Sans Notch", sans-serif;
+  z-index: 1;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%);
+  Color: darkred;
+  padding: 20px;
+  text-shadow: 1vw 1vw black;
 }
 
 #headline {
-	position: relative;
+  position: relative;
 }
 
 
@@ -247,5 +262,4 @@ input[type="radio"]{
   height: 300px;
   background-color: red;
 }
-
 </style>
