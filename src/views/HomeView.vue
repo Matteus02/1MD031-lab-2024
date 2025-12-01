@@ -25,7 +25,7 @@
       </div>
 
 
-      <div>
+      <div id="deliveryInformation">
         <h3>Delivery information:</h3>
         <form>
           <p>
@@ -35,14 +35,6 @@
           <p>
             <label for="email">Email</label><br>
             <input type="email" id="email" v-model="email" required="required" placeholder="E-mail address">
-          </p>
-          <p>
-            <label for="street">Street</label><br>
-            <input type="text" id="street" v-model="street" placeholder="Street name">
-          </p>
-          <p>
-            <label for="housenumber">House</label><br>
-            <input type="number" id="housenumber" v-model="house" placeholder="House number">
           </p>
           <p>
             <label for="payment">Select payment option</label><br>
@@ -70,19 +62,23 @@
 
           </p>
         </form>
+
+        <h4>Mark delivery location on the map by clicking</h4>
+        <div id="map" v-on:click="setLocation">
+          <div v-bind:style="{ left: this.location.x + 'px', top: this.location.y + 'px' }">
+            T
+          </div>
+        </div>
+
+        <button id="orderButton" type="submit" v-on:click="printOrder">
+          <img
+            src="https://st2.depositphotos.com/1322515/5340/i/950/depositphotos_53400569-stock-illustration-delivery-scooter.jpg"
+            alt="Order" title="Order" style="width: 40px">
+          Submit order!
+        </button>
       </div>
 
     </section>
-
-    <div>
-      <button id="orderButton" type="submit" v-on:click="printOrder">
-        <img
-          src="https://st2.depositphotos.com/1322515/5340/i/950/depositphotos_53400569-stock-illustration-delivery-scooter.jpg"
-          alt="Order" title="Order" style="width: 40px">
-        Submit order!
-      </button>
-    </div>
-
 
   </main>
   <hr>
@@ -91,11 +87,7 @@
   </footer>
 
 
-  <div>
-    <div id="map" v-on:click="addOrder">
-      click here
-    </div>
-  </div>
+
 
 </template>
 
@@ -126,41 +118,51 @@ export default {
       burgers: menu,
       fullname: "",
       email: "",
-      street: "",
-      house: "",
       payment: "",
       gender: "",
-      orderedBurgers: {}
+      orderedBurgers: {},
+      location: {
+        x: 0,
+        y: 0
+      }
     }
   },
   methods: {
 
-    addToOrder: function (event) {
-      this.orderedBurgers[event.name] = event.amount;
-      console.log(orderedBurgers);
-    },
 
-    printOrder: function () {
-      console.log(this.fullname, this.email, this.street, this.house, this.payment, this.gender)
-    },
-    getOrderNumber: function () {
-      return Math.floor(Math.random() * 100000);
-    },
-    addOrder: function (event) {
+    setLocation: function (event) {
       var offset = {
         x: event.currentTarget.getBoundingClientRect().left,
         y: event.currentTarget.getBoundingClientRect().top
       };
+      const localX = event.clientX - 10 - offset.x;
+      const localY = event.clientY - 10 - offset.y;
+
+      this.location.x = localX;
+      this.location.y = localY;
+    },
+    addToOrder: function (event) {
+      this.orderedBurgers[event.name] = event.amount;
+      console.log(this.orderedBurgers);
+    },
+    printOrder: function () {
       socket.emit("addOrder", {
         orderId: this.getOrderNumber(),
         details: {
-          x: event.clientX - 10 - offset.x,
-          y: event.clientY - 10 - offset.y
+          x: this.location.x,
+          y: this.location.y
         },
-        orderItems: ["Beans", "Curry"]
+        burgers: this.orderedBurgers,
+        fullname: this.fullname,
+        email: this.email,
+        payment: this.payment,
+        gender: this.gender
       }
       );
-    }
+    },
+    getOrderNumber: function () {
+      return Math.floor(Math.random() * 100000);
+    },
   }
 }
 
@@ -202,7 +204,7 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 3rem;
+  gap: 5%;
 }
 
 
@@ -236,7 +238,6 @@ input[type="radio"] {
   opacity: 0.9;
   width: 100%;
   height: auto;
-
 }
 
 #headline h1 {
@@ -258,8 +259,32 @@ input[type="radio"] {
 
 
 #map {
-  width: 300px;
-  height: 300px;
-  background-color: red;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  background-repeat: no-repeat;
+  height: 1078px;
+  width: 1920px;
+  background: url("/img/polacks.jpg");
+  cursor: crosshair;
 }
+
+
+#deliveryInformation {
+  overflow: auto;
+}
+
+
+#map div {
+  position: absolute;
+  background: green;
+  color: black;
+  border-radius: 10px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  font-size: 18px;
+}
+
+
 </style>

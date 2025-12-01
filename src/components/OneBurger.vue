@@ -48,6 +48,7 @@ export default {
           amount: this.amountOrdered
         })
       }
+
     },
 
     removeBurger: function () {
